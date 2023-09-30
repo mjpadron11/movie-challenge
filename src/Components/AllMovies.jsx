@@ -29,18 +29,18 @@ const StyledMovieTitle = styled.span`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   text-align: center;
   padding: 8px;
-  opacity: 0; /* Inicialmente oculto */
-  transform: translateY(100%); /* Fuera de la vista */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
 `;
 
 const StyledContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Cuatro columnas */
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(100px, auto);
   justify-items: center;
   gap: 2rem;
@@ -51,18 +51,18 @@ const StyledLink = styled(Link)`
   color: inherit;
   &:hover {
     ${StyledPoster} {
-      transform: scale(1.1); /* Agranda el póster en hover */
+      transform: scale(1.1);
     }
     ${StyledMovieTitle} {
-      opacity: 1; /* Muestra el título en hover */
-      transform: translateY(0); /* Muestra el título en hover */
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 `;
 
 const AllMovies = () => {
-  const { movieState } = useContext(appContext); // Obtener el estado del contexto
-  const allMovies = movieState.allMovies; // Obtener la lista de películas
+  const { movieState } = useContext(appContext); 
+  const allMovies = movieState.allMovies;
 
   return (
     <StyledWrapper>

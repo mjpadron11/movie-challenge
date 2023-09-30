@@ -44,13 +44,13 @@ const MovieOverview = styled.p`
 
 const Details = () => {
   const { movieState: { allMovies } } = useContext(appContext);
-  const { id } = useParams(); // Obtiene el 'id' de la película de la URL
+  const { id } = useParams(); // Obstains movie ID from URL
 
-  // Busca la película por 'id' en la lista de películas
+  // Searches movie by ID in movies list.
   const selectedMovie = allMovies.find(movie => movie.id.toString() === id);
 
   if (!selectedMovie) {
-    return <div>Película no encontrada</div>;
+    return <div>Movie not found</div>;
   }
 
   const { title, overview, release_date, vote_average, poster_path } = selectedMovie;

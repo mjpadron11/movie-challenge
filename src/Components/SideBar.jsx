@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
+import getAllMovieGenres from '../helpers/allMoviesGenres';
 
 const StyledWrapper = styled.div`
 	position: absolute;
@@ -18,36 +19,25 @@ const StyledListWrapper = styled.ul`
 	text-align: left;
 `
 
-function SideBar() {
-  const movieGenres = [
-    'Action',
-    'Comedy',
-    'Drama',
-    'Science Fiction',
-    'Horror',
-    'Adventure',
-    'Animation',
-    'Fantasy',
-    'Romance',
-    'Crime',
-    'Thriller',
-    'Mystery',
-    'Family',
-    'Documentary',
-    'Music',
-    'History',
-    'Western',
-    'War',
-    'Biography',
-    'Sport',
-    'Musical',
-  ];
+const SideBar = () => {
+  const [genres, setGenres] = useState([]);
 
-	return (
-    <StyledWrapper className="sidebar">
+  useEffect(() => {
+    // Calls the function to obtain all genres when component is mounted
+    getAllMovieGenres()
+      .then((data) => {
+        setGenres(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []); // Second argument assures the rquest is made once the component is mounted
+
+  return (
+    <StyledWrapper>
       <StyledListWrapper>
-        {movieGenres.map((genre, index) => (
-          <li key={index}>{genre}</li>
+        {genres.map((genre) => (
+          <li key={genre.id}>{genre.name}</li>
         ))}
       </StyledListWrapper>
     </StyledWrapper>

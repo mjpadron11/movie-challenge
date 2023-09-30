@@ -12,8 +12,8 @@ function Movies () {
     <>
       <MainWrapper>
         <Navbar />
-        {/* <Search />
-        <SideBar /> */}
+        {/* <Search /> */}
+        {/* <SideBar /> */}
         <AllMovies />
       </MainWrapper>
       <Footer />
